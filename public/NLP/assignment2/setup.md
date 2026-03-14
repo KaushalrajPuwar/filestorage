@@ -72,6 +72,7 @@ PyTorch's built-in `nn.GRU`, and confirms the gates are functioning:
 ```
 .
 ├── requirements.txt
+├── SETUP.pdf
 ├── SETUP.md
 ├── q1a_parser.py
 ├── verify.py
