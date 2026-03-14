@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h3>Available Files</h3>
+    <ul id="filelist"></ul>
+
+    <pre id="viewer"></pre>
+
+    <script>
+        fetch("/files.json")
+            .then(r => r.json())
+            .then(data => {
+                const list = document.getElementById("filelist");
+
+                data.files.forEach(file => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+
+                    a.href = "#";
+                    a.textContent = file;
+
+                    a.onclick = () => {
+                        fetch("/" + file)
+                            .then(r => r.text())
+                            .then(t => document.getElementById("viewer").textContent = t);
+                    };
+
+                    li.appendChild(a);
+                    list.appendChild(li);
+                });
+            });
+    </script>
+
+</body>
+
+</html>
